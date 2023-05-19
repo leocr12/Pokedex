@@ -10,9 +10,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.lifecycleScope
+import com.crleo.pokedex.ui.features.pokedex.presentation.PokedexPresenter
+import com.crleo.pokedex.ui.features.pokedex.view.PokedexScreen
 import com.crleo.pokedex.ui.theme.PokedexTheme
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var presenter: PokedexPresenter
+
+    private val coroutineScope: CoroutineScope by lazy { lifecycleScope }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,22 +35,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    PokedexScreen(presenter = presenter)
                 }
             }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    PokedexTheme {
-        Greeting("Android")
+        presenter.setScope(coroutineScope)
+        presenter.getPokemonList()
     }
 }
