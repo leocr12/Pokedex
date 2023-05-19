@@ -22,7 +22,8 @@ fun PokedexScreen(presenter: PokedexPresenter) {
                 pokemonList = pokemonList,
                 isLoading = currentState.isLoading,
                 isError = currentState.isError,
-                onNextPage = presenter::getNextPage
+                onNextPage = presenter::getNextPage,
+                onPokemonClicked = presenter::onPokemonItemClick
             )
         }
         is PokedexViewState.Error -> {

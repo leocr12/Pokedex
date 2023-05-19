@@ -20,11 +20,12 @@ fun PokemonList(
     pokemonList: List<PokemonTopLevel>,
     isLoading: Boolean,
     isError: Boolean,
-    onNextPage: () -> Unit
+    onNextPage: () -> Unit,
+    onPokemonClicked: (Int) -> Unit
 ) {
     LazyColumn {
         itemsIndexed(items = pokemonList) { index, pokemon ->
-            PokemonItem(pokemon = pokemon, index = index + 1)
+            PokemonItem(pokemon = pokemon, index = index + 1, onPokemonClicked = onPokemonClicked)
             if (index == pokemonList.size - 1 && !isLoading && !isError) {
                 onNextPage()
             }

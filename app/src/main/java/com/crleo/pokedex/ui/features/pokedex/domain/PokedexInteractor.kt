@@ -1,5 +1,6 @@
 package com.crleo.pokedex.ui.features.pokedex.domain
 
+import com.crleo.pokedex.data.model.PokemonDetails
 import com.crleo.pokedex.data.model.PokemonTopLevel
 
 interface PokedexInteractor {

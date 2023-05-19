@@ -1,5 +1,6 @@
 package com.crleo.pokedex.ui.features.pokedex.data
 
+import com.crleo.pokedex.data.model.PokemonDetails
 import com.crleo.pokedex.data.model.PokemonTopLevel
 import com.crleo.pokedex.data.network.ApiException
 import com.crleo.pokedex.data.network.PokedexApiService

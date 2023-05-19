@@ -1,5 +1,6 @@
 package com.crleo.pokedex.data.network
 
+import com.crleo.pokedex.data.model.PokemonDetails
 import com.crleo.pokedex.data.model.PokemonTopLevel
 import com.crleo.pokedex.data.model.PokemonListResponse
 import retrofit2.Response
@@ -12,6 +13,6 @@ interface PokedexApiService {
     @GET("pokemon")
     suspend fun getPokemonList(@Query("limit") limit: Int, @Query("offset") offset: Int): Response<PokemonListResponse>
 
-    @GET("pokemon/{pokemonName}")
-    suspend fun getPokemonDetails(@Path("pokemonName") pokemonName: String): Response<PokemonTopLevel>
+    @GET("pokemon/{pokemonId}")
+    suspend fun getPokemonDetails(@Path("pokemonId") pokemonId: Int): Response<PokemonDetails>
 }

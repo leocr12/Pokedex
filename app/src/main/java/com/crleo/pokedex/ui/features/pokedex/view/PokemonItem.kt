@@ -1,5 +1,6 @@
 package com.crleo.pokedex.ui.features.pokedex.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,10 +15,17 @@ import com.crleo.pokedex.data.model.PokemonTopLevel
 import java.util.*
 
 @Composable
-fun PokemonItem(pokemon: PokemonTopLevel, index: Int) {
+fun PokemonItem(
+    pokemon: PokemonTopLevel,
+    index: Int,
+    onPokemonClicked: (Int) -> Unit
+) {
     Row(modifier = Modifier
         .padding(16.dp)
         .fillMaxWidth()
+        .clickable {
+            onPokemonClicked(index)
+        }
     ) {
         Text(
             text = "$index",
