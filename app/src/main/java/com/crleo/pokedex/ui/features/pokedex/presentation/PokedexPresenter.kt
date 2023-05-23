@@ -1,6 +1,7 @@
 package com.crleo.pokedex.ui.features.pokedex.presentation
 
 import com.crleo.pokedex.ui.features.pokedex.domain.PokedexInteractor
+import com.crleo.pokedex.ui.features.pokedex.view.PokemonIntent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,5 +14,5 @@ interface PokedexPresenter {
     fun setScope(scope: CoroutineScope)
     fun getPokemonList()
     fun getNextPage()
-    fun onPokemonItemClick(pokemonId: Int)
+    fun onPokemonItemClick(pokemonIntent: PokemonIntent)
 }

@@ -18,13 +18,13 @@ import java.util.*
 fun PokemonItem(
     pokemon: PokemonTopLevel,
     index: Int,
-    onPokemonClicked: (Int) -> Unit
+    onPokemonClicked: (PokemonIntent) -> Unit
 ) {
     Row(modifier = Modifier
         .padding(16.dp)
         .fillMaxWidth()
         .clickable {
-            onPokemonClicked(index)
+            onPokemonClicked(PokemonIntent.PokemonClicked(index))
         }
     ) {
         Text(

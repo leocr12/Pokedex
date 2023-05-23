@@ -2,6 +2,7 @@ package com.crleo.pokedex.ui.features.pokedex.presentation
 
 import com.crleo.pokedex.router.PokedexRouter
 import com.crleo.pokedex.ui.features.pokedex.domain.PokedexInteractor
+import com.crleo.pokedex.ui.features.pokedex.view.PokemonIntent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -60,7 +61,11 @@ class PokedexPresenterImpl @Inject constructor(
         }
     }
 
-    override fun onPokemonItemClick(pokemonId: Int) {
-        pokedexRouter.navigateToPokemonDetails(pokemonId)
+    override fun onPokemonItemClick(pokemonIntent: PokemonIntent) {
+        when(pokemonIntent) {
+            is PokemonIntent.PokemonClicked -> {
+                pokedexRouter.navigateToPokemonDetails(pokemonId = pokemonIntent.index)
+            }
+        }
     }
 }

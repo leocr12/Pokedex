@@ -21,7 +21,7 @@ fun PokemonList(
     isLoading: Boolean,
     isError: Boolean,
     onNextPage: () -> Unit,
-    onPokemonClicked: (Int) -> Unit
+    onPokemonClicked: (PokemonIntent) -> Unit
 ) {
     LazyColumn {
         itemsIndexed(items = pokemonList) { index, pokemon ->
